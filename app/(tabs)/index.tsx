@@ -1,98 +1,138 @@
-import { Image } from 'expo-image';
-import { Platform, StyleSheet } from 'react-native';
+import { MaterialCommunityIcons } from "@expo/vector-icons";
+import { Pressable, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 
-import { HelloWave } from '@/components/hello-wave';
-import ParallaxScrollView from '@/components/parallax-scroll-view';
-import { ThemedText } from '@/components/themed-text';
-import { ThemedView } from '@/components/themed-view';
-import { Link } from 'expo-router';
-
-export default function HomeScreen() {
+export default function Dashboard() {
   return (
-    <ParallaxScrollView
-      headerBackgroundColor={{ light: '#A1CEDC', dark: '#1D3D47' }}
-      headerImage={
-        <Image
-          source={require('@/assets/images/partial-react-logo.png')}
-          style={styles.reactLogo}
-        />
-      }>
-      <ThemedView style={styles.titleContainer}>
-        <ThemedText type="title">Welcome!</ThemedText>
-        <HelloWave />
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 1: Try it</ThemedText>
-        <ThemedText>
-          Edit <ThemedText type="defaultSemiBold">app/(tabs)/index.tsx</ThemedText> to see changes.
-          Press{' '}
-          <ThemedText type="defaultSemiBold">
-            {Platform.select({
-              ios: 'cmd + d',
-              android: 'cmd + m',
-              web: 'F12',
-            })}
-          </ThemedText>{' '}
-          to open developer tools.
-        </ThemedText>
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <Link href="/modal">
-          <Link.Trigger>
-            <ThemedText type="subtitle">Step 2: Explore</ThemedText>
-          </Link.Trigger>
-          <Link.Preview />
-          <Link.Menu>
-            <Link.MenuAction title="Action" icon="cube" onPress={() => alert('Action pressed')} />
-            <Link.MenuAction
-              title="Share"
-              icon="square.and.arrow.up"
-              onPress={() => alert('Share pressed')}
-            />
-            <Link.Menu title="More" icon="ellipsis">
-              <Link.MenuAction
-                title="Delete"
-                icon="trash"
-                destructive
-                onPress={() => alert('Delete pressed')}
-              />
-            </Link.Menu>
-          </Link.Menu>
-        </Link>
+    //</ThemedView>
+      //</ThemedText>
+        <View style={styles.container}>
+          <Text style={styles.logo}>• ScrollSet</Text>
 
-        <ThemedText>
-          {`Tap the Explore tab to learn more about what's included in this starter app.`}
-        </ThemedText>
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 3: Get a fresh start</ThemedText>
-        <ThemedText>
-          {`When you're ready, run `}
-          <ThemedText type="defaultSemiBold">npm run reset-project</ThemedText> to get a fresh{' '}
-          <ThemedText type="defaultSemiBold">app</ThemedText> directory. This will move the current{' '}
-          <ThemedText type="defaultSemiBold">app</ThemedText> to{' '}
-          <ThemedText type="defaultSemiBold">app-example</ThemedText>.
-        </ThemedText>
-      </ThemedView>
-    </ParallaxScrollView>
+          <Text style={styles.heading}>Watch what{"\n"}matters.</Text>
+          <Text style={styles.subHeading}>Learn from your scroll.</Text>
+
+          <Text style={styles.description}>ScrollSet collects the best from Instagram, Youtube, X, Reddit and more — into one calm daily digest. Summaries, quizzes, streaks. Then it closes the loop.</Text>
+
+          <View style= {styles.cardRow}>
+            <View style= {styles.card}>
+              <View style= {styles.cardSymbol}>
+                <MaterialCommunityIcons
+                  name="star-four-points"
+                  size={22}
+                  color="#1DBA8A"
+                />
+              </View>
+              <Text style= {styles.cardDesc}>Top Picks</Text>
+            </View>
+
+            <View style= {styles.card}>
+              <View style= {styles.cardSymbol}>
+                <MaterialCommunityIcons
+                  name="brain"
+                  size={22}
+                  color="#1DBA8A"
+                />
+              </View>
+              <Text style= {styles.cardDesc}>Auto-Quiz</Text>
+            </View>
+
+            <View style= {styles.card}>
+              <View style= {styles.cardSymbol}>
+                <MaterialCommunityIcons
+                  name="timer-outline"
+                  size={22}
+                  color="#1DBA8A"
+                />
+              </View>
+              <Text style= {styles.cardDesc}>Hard Stop</Text>
+            </View>
+          </View>
+          
+          <View>
+            <TouchableOpacity style={styles.button}>
+              <Text style= {styles.buttonText}>Get Started</Text>
+            </TouchableOpacity>
+          </View>
+
+          <View>
+            <Pressable onPress={() => navigation.navigate("homepage")}>
+              <Text style= {styles.alreadyAccLink}>
+                I already have an account
+              </Text>
+            </Pressable>
+          </View>
+        </View>
   );
 }
 
-const styles = StyleSheet.create({
-  titleContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: 8,
+const styles = StyleSheet.create ({
+  container: {
+    flex: 1,
+    marginLeft: 20,
+    marginRight: 20,
+    backgroundColor: "#edede9",
   },
-  stepContainer: {
-    gap: 8,
-    marginBottom: 8,
+  logo: {
+    marginTop: 60,
+    color: "#48a363",
+    fontSize: 14,
+    fontWeight: "600",
+    marginBottom: 40,
   },
-  reactLogo: {
-    height: 178,
-    width: 290,
-    bottom: 0,
-    left: 0,
-    position: 'absolute',
+  
+  heading: {
+    color: "#000",
+    fontSize: 40,
+    fontFamily: "Cormorant",     //no fontWeight to be used when using custom fonts
+  },
+  subHeading: {
+    color: "#48a363",
+    fontSize: 40,
+    fontFamily: "CormorantItalic",
+    marginBottom: 30,
+  },
+  description: {
+    color: "#666",
+    fontSize: 17,
+  },
+
+  cardRow: {
+    paddingTop: 40,
+    flexDirection: "row",
+    justifyContent: "space-between",
+    gap: 3,
+  },
+  card: {
+    padding: 18,
+    backgroundColor: "#f8f9fa",
+    borderRadius: 20,
+    borderWidth: 1,
+    borderColor: "#d6ccc2",
+  },
+  cardSymbol: {
+    paddingBottom: 3,
+  },
+  cardDesc: {
+    textAlign: "center",
+  },
+
+  button: {
+    marginTop: 40,
+    backgroundColor: "#000",
+    paddingVertical: 18,
+    borderRadius: 900,
+  },
+  buttonText: {
+    color: "white",
+    textAlign: "center",
+    fontSize: 15,
+    fontWeight: "bold",
+  },
+
+  alreadyAccLink: {
+    marginTop: 6,
+    color: "#666",
+    textAlign: "center",
+    fontSize: 14,
   },
 });
