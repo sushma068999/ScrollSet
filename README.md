@@ -43,4 +43,4 @@ Instead of relying on recommendation algorithms, ScrollSet lets users decide exa
 - Accessibility improvements
 
 ## 📌 Status
-🚧 Currently under active development.
+🚧🚨 Currently under active development.
