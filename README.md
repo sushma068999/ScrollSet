@@ -5,6 +5,10 @@ ScrollSet is a React Native mobile application that helps users take back contro
 ## 📖 Purpose
 Instead of relying on recommendation algorithms, ScrollSet lets users decide exactly what they want to watch by filtering content around self-selected topics. The goal is to make every scroll intentional, educational, and aligned with the user's interests.
 
+Working prototype: https://scrollset1.lovable.app/
+
+Live demo: [link]
+
 ## ✨Features
 - 🎯 Topic-based content filtering
 - 🚫 No recommendation algorithm
